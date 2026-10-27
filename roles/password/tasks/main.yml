@@ -1,0 +1,6 @@
+- name: Set password for {{ target_user }}
+  ansible.builtin.user:
+    name: "{{ target_user }}"
+    password: "{{ new_password | password_hash('sha512', password_salt) }}"
+    update_password: always
+  no_log: true
